@@ -455,9 +455,12 @@
                         android:layout_marginLeft="30dp"
                         android:gravity="bottom">
                         <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/checkTerms" />
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:id="@+id/checkTerms"
+                            android:background="@drawable/item_CheckBox"
+                            android:button="@null"
+                            android:layout_marginBottom="3dp" />
                         <LinearLayout
                             android:orientation="vertical"
                             android:minWidth="25px"
@@ -514,7 +517,7 @@
             android:layout_height="60dp"
             android:id="@+id/linearLayout7">
             <Button
-                android:text="GO 500WATT"
+                android:text="GO TEAM MATZMAN"
                 android:id="@+id/ActionSignUp"
                 android:textColor="#ffffff"
                 android:background="#ffe5a109"

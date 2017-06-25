@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "403007189662",
+    "firebase_url": "https://teammatzman-4656b.firebaseio.com",
+    "project_id": "teammatzman-4656b",
+    "storage_bucket": "teammatzman-4656b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403007189662:android:762f562efff2e688",
+        "android_client_info": {
+          "package_name": "com.goheja.teammatzman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403007189662-7d8cc0r5qik64sb1f7i7sufjfk8tt0f8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9pbZgPglsm4AmS20hYPAVPhxxuVQ5cKY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

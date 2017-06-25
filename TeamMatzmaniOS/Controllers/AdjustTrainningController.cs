@@ -1,15 +1,17 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
 using PortableLibrary;
+using PortableLibrary.Model;
+using System.Threading;
 
 namespace location2
 {
     public partial class AdjustTrainningController : BaseViewController
     {
 		public GoHejaEvent selectedEvent;
-		public EventTotal eventTotal;
+        public ReportData selectedEventReport;
 
         public AdjustTrainningController() : base()
 		{
@@ -31,14 +33,11 @@ namespace location2
 			var g = new UITapGestureRecognizer(() => View.EndEditing(true));
 			View.AddGestureRecognizer(g);
 
-			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.DidShowNotification, KeyBoardUpNotification);
-			NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, KeyBoardDownNotification);
-
 			InitUISettings();
 
 			if (!IsNetEnable()) return;
 
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView(Constants.MSG_LOADING_EVENT_DETAIL);
 
@@ -46,8 +45,6 @@ namespace location2
 
 				HideLoadingView();
 			});
-
-			//InitBindingEventTotal();
 		}
 
 		void InitUISettings()
@@ -104,18 +101,16 @@ namespace location2
 			txtDistance.ShouldChangeCharacters = ActionChangeSliderValue;
 			txtTss.ShouldChangeCharacters = ActionChangeSliderValue;
 
-			if (eventTotal == null || eventTotal.totals == null) return;
+			if (selectedEventReport == null || selectedEventReport.data == null) return;
 
-			var strEt = GetFormatedDurationAsMin(eventTotal.GetValue(Constants.TOTALS_ES_TIME));
-			var strTd = eventTotal.GetValue(Constants.TOTALS_DISTANCE);
-			var strTss = eventTotal.GetValue(Constants.TOTALS_LOAD);
+			var strEt = GetFormatedDurationAsMin(selectedEventReport.GetTotalValue(Constants.TOTALS_ES_TIME));
+			var strTd = selectedEventReport.GetTotalValue(Constants.TOTALS_DISTANCE);
+			var strTss = selectedEventReport.GetTotalValue(Constants.TOTALS_LOAD);
 
 			txtTime.Text = strEt.ToString();
-			//txtDistance.Text = float.Parse(strTd).ToString("F1");
 			txtTss.Text = float.Parse(strTss).ToString("F1");
 
 			seekTime.Value = strEt;
-			//seekDistance.Value = float.Parse(strTd);
 			seekTSS.Value = float.Parse(strTss);
 
 			var valDistance = float.Parse(strTd);
@@ -201,7 +196,7 @@ namespace location2
 		{
 			if (!IsNetEnable()) return;
 
-			System.Threading.ThreadPool.QueueUserWorkItem(delegate
+			ThreadPool.QueueUserWorkItem(delegate
 			{
 				ShowLoadingView(Constants.MSG_ADJUST_TRAINING);
 
@@ -209,58 +204,12 @@ namespace location2
 				{
 					var authorID = AppSettings.CurrentUser.userId;
 
-					UpdateMemberNotes(txtComment.Text, authorID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, selectedEvent.type);
+					UpdateMemberNotes(string.Empty, authorID, selectedEvent._id, MemberModel.username, attended.On ? "1" : "0", txtTime.Text, txtDistance.Text, txtTss.Text, selectedEvent.type);
 
 					HideLoadingView();
 					NavigationController.PopViewController(true);
 				});
 			});
 		}
-
-		#region keyboard process
-		private void KeyBoardUpNotification(NSNotification notification)
-		{
-			if (!txtComment.IsFirstResponder)
-				return;
-
-			CGRect r = UIKeyboard.BoundsFromNotification(notification);
-
-			scroll_amount = (float)r.Height / 1.5f;
-
-			if (scroll_amount > 0)
-			{
-				moveViewUp = true;
-				ScrollTheView(moveViewUp);
-			}
-			else {
-				moveViewUp = false;
-			}
-		}
-
-
-		private void KeyBoardDownNotification(NSNotification notification)
-		{
-			if (moveViewUp) { ScrollTheView(false); }
-		}
-		private void ScrollTheView(bool move)
-		{
-			// scroll the view up or down
-			UIView.BeginAnimations(string.Empty, System.IntPtr.Zero);
-			UIView.SetAnimationDuration(0.3);
-
-			CGRect frame = this.View.Frame;
-
-			if (move)
-			{
-				frame.Y = -(scroll_amount);
-			}
-			else {
-				frame.Y = 0;
-			}
-
-			this.View.Frame = frame;
-			UIView.CommitAnimations();
-		}
-		#endregion
     }
 }

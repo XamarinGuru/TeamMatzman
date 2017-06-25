@@ -1,8 +1,9 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 using CoreGraphics;
 using PortableLibrary;
+using System.Threading;
 
 namespace location2
 {
@@ -75,7 +76,7 @@ namespace location2
 
 			if (Validate())
 			{
-				System.Threading.ThreadPool.QueueUserWorkItem(delegate
+				ThreadPool.QueueUserWorkItem(delegate
 				{
 					ShowLoadingView(Constants.MSG_CHANGE_PASSWORD);
 
