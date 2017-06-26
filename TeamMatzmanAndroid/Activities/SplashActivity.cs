@@ -31,15 +31,15 @@ namespace goheja
             SetContentView(Resource.Layout.SplashActivity);
             videoView = FindViewById<VideoView>(Resource.Id.videoView);
 
-#if DEBUG
-            GotoMainIfAlreadyLoggedin(null, null);
-#else
+//#if DEBUG
+//            GotoMainIfAlreadyLoggedin(null, null);
+//#else
             var aaa = Android.Net.Uri.Parse("android.resource://" + Application.PackageName + "/" + Resource.Raw.splash);
             videoView.SetVideoURI(aaa);
             videoView.Start();
 
             videoView.Completion += GotoMainIfAlreadyLoggedin;
-#endif
+//#endif
         }
 
 		private void GotoMainIfAlreadyLoggedin(object sender, System.EventArgs e)

@@ -36,12 +36,12 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: sagiv daniel (ACS2X6ERDY)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <IpaPackageName></IpaPackageName>
     <AssemblyName>Nitro</AssemblyName>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignProvision>lamdan-pro</CodesignProvision>
+    <CodesignProvision>TeamMatzman-pro</CodesignProvision>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -355,11 +355,6 @@
     <BundleResource Include="Resources\heart.png" />
     <BundleResource Include="Resources\ninja.png" />
     <BundleResource Include="Resources\pen.png" />
-    <BundleResource Include="Resources\icon.png" />
-    <BundleResource Include="Resources\Icon-72.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-72%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -444,7 +439,6 @@
     <BundleResource Include="Resources\icon_changepw.png" />
     <BundleResource Include="Resources\icon_logo_new.png" />
     <BundleResource Include="Resources\no-photo-round.png" />
-    <BundleResource Include="Resources\splash_new.png" />
     <BundleResource Include="Resources\icon_map_pin.png" />
     <BundleResource Include="Resources\pin_camera.png" />
     <BundleResource Include="Resources\pin_check_mark.png" />
@@ -496,6 +490,9 @@
     <BundleResource Include="Resources\icon_checkbox_select.png" />
     <BundleResource Include="Resources\splash.mp4" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\icon512.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\timer_new.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References" />
@@ -509,7 +506,7 @@
     <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
-    <ITunesArtwork Include="Resources\Icon.png" />
+    <ITunesArtwork Include="iTunesArtwork" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="btprogresshud">
@@ -541,8 +538,8 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\watch.png" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\120.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References" />
