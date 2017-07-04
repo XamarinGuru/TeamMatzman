@@ -41,6 +41,8 @@
 	<string>YES</string>
 	<key>com.apple.developer.healthkit</key>
 	<true/>
+	<key>CFBundleName</key>
+	<string>500WATT</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Go-heja application will access your calendar</string>
 	<key>NSCameraUsageDescription</key>

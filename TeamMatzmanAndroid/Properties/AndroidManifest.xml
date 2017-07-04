@@ -25,12 +25,16 @@
 				<category android:name="${applicationId}" />
 			</intent-filter>
 		</receiver>
-		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/icon_remote_notification" />
-		<!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+
+		<meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/icon_remote_notification" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more. -->
-		<!--<meta-data
+        <!--<meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />-->
+		
 		<!-- END Manual Firebase Additions -->
 	</application>
 	<activity android:name="MainActivity" android:screenOrientation="landscape" android:launchMode="singleInstance" android:noHistory="true"></activity>

@@ -6,17 +6,17 @@ using Foundation;
 
 namespace location2
 {
-    public partial class SplashViewController : UIViewController
-    {
+    public partial class SplashViewController : BaseViewController
+	{
 		MPMoviePlayerController _player;
 		NSObject _playbackObserver;
 
 		const string NOTIFICATION_PRELOAD_FINISH = "MPMoviePlayerContentPreloadDidFinishNotification";
 		const string NOTIFICATION_PLAYBACK_FINISH = "MPMoviePlayerPlaybackDidFinishNotification";
 
-		public SplashViewController (IntPtr handle) : base (handle)
-        {
-        }
+		public SplashViewController(IntPtr handle) : base(handle)
+		{
+		}
 
 		public override void ViewDidLoad()
 		{
@@ -38,7 +38,6 @@ namespace location2
 				(notify) =>
 				{
 					GotoMainIfAlreadyLoggedin();
-					//_player.Play();
 					notify.Dispose();
 				});
 
@@ -62,6 +61,8 @@ namespace location2
 
 		private void GotoMainIfAlreadyLoggedin()
 		{
+            if (!IsNetEnable()) return;
+
 			var nextVC = Storyboard.InstantiateViewController("InitViewController");
 
 			var currentUser = AppSettings.CurrentUser;
@@ -81,7 +82,7 @@ namespace location2
 				}
 			}
 
-			this.PresentViewController(nextVC, false, null);
+			PresentViewController(nextVC, false, null);
 		}
     }
 }
